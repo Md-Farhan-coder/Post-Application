@@ -6,7 +6,7 @@ const route = express.Router();
 route.get("/",(req,res)=>{
     res.json("Hello"); 
 })
-route.post("/create", create);
+route.post("/create", create); 
 route.post('/login', login);
 route.post('/posts', posts);
 route.get("/getall", getAll);  
