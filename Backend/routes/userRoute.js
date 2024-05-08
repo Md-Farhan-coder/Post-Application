@@ -10,7 +10,7 @@ route.post("/create", create);
 route.post('/login', login);
 route.post('/posts', posts);
 route.get("/getall", getAll);  
-route.post('/comment/:id', comments);
+route.post('/comment/:id', comments); 
 // route.delete("/delete/:id", deleteUser);
    
 export default route;   
