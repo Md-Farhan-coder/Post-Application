@@ -13,10 +13,10 @@ const Register = () => {
 		const checkLoggedIn = () => {
 			
 			// If user hass logged in so
-			console.log(JSON.stringify(Cookies.get("isLoggedIn")));
+			
 			if (Cookies.get("isLoggedIn")!=undefined)				
 			{
-			
+			console.log((Cookies.get("isLoggedIn")));
 			const loggedInCookie = Cookies.get("isLoggedIn");
 			
 			console.log(JSON.parse(loggedInCookie).bool);
@@ -31,6 +31,9 @@ const Register = () => {
 					// Navigate to another login page after 5 seconds
 				
 				}
+			}
+			else{//setMsg("Error Occured")
+			//history('/register')
 			}
 		};
 
@@ -57,7 +60,7 @@ const Register = () => {
 		const{name,email,phone,password} = user;
 		if(email!="" && password!="" && name!="" && phone!=""){
 		await axios
-			.post("http://localhost:8000/create", user)
+			.post("https://post-application-e27c.onrender.com/create", user)
 			.then((response) => {
 				//	toast.success(response.data.msg, { position: "top-right" });
 				console.log(response.data);
@@ -71,14 +74,14 @@ const Register = () => {
 };
 
 	return (
-		<div class="container gradient">
-		<div class="container gradient">
-			<div class="screen">
-				<div class="screen__content">
-					<form class="login" onSubmit={submitForm}>
-						<div class="login__field">
-							<i class="login__icon fas fa-user"></i>
-							{/* <input type="text" class="login__input" placeholder="User name / Email" /> */}
+		<div className="container gradient">
+		<div className="container gradient">
+			<div className="screen">
+				<div className="screen__content">
+					<form className="login" onSubmit={submitForm}>
+						<div className="login__field">
+							<i className="login__icon fas fa-user"></i>
+							{/* <input type="text" className="login__input" placeholder="User name / Email" /> */}
 							<input
 								type="text"
 								className="login__input"
@@ -89,9 +92,9 @@ const Register = () => {
 								placeholder="Username"
 							/>
 						</div>
-						<div class="login__field">
-							<i class="login__icon fas fa-user"></i>
-							{/* <input type="text" class="login__input" placeholder="User name / Email" /> */}
+						<div className="login__field">
+							<i className="login__icon fas fa-user"></i>
+							{/* <input type="text" className="login__input" placeholder="User name / Email" /> */}
 							<input
 								type="text"
 								className="login__input"
@@ -102,9 +105,9 @@ const Register = () => {
 								placeholder="Email"
 							/>
 						</div>
-						<div class="login__field">
-							<i class="login__icon fas fa-user"></i>
-							{/* <input type="text" class="login__input" placeholder="User name / Email" /> */}
+						<div className="login__field">
+							<i className="login__icon fas fa-user"></i>
+							{/* <input type="text" className="login__input" placeholder="User name / Email" /> */}
 							<input
 								type="number"
 								className="login__input"
@@ -115,9 +118,9 @@ const Register = () => {
 								placeholder="Phone"
 							/>
 						</div>
-						<div class="login__field">
-							<i class="login__icon fas fa-lock"></i>
-							{/* <input type="password" class="login__input" placeholder="Password" /> */}
+						<div className="login__field">
+							<i className="login__icon fas fa-lock"></i>
+							{/* <input type="password" className="login__input" placeholder="Password" /> */}
 							<input
 								type="password"
 								className="login__input"
@@ -128,20 +131,20 @@ const Register = () => {
 								placeholder="password"
 							/>
 						</div>
-						<button class="button login__submit" >
-							<span class="button__text">Log In Now</span> 
-							<i class="button__icon fas fa-chevron-right"></i>
+						<button className="button login__submit" >
+							<span className="button__text">Log In Now</span> 
+							<i className="button__icon fas fa-chevron-right"></i>
 						</button>
 						<span className="new-msg" onClick={()=>	history("/login")}>Already Logged in </span>
 				<span className="msg"> {msg}</span>			
 					</form>
 
 				</div>
-				<div class="screen__background">
-					<span class="screen__background__shape screen__background__shape4"></span>
-					<span class="screen__background__shape screen__background__shape3"></span>
-					<span class="screen__background__shape screen__background__shape2"></span>
-					<span class="screen__background__shape screen__background__shape1"></span>
+				<div className="screen__background">
+					<span className="screen__background__shape screen__background__shape4"></span>
+					<span className="screen__background__shape screen__background__shape3"></span>
+					<span className="screen__background__shape screen__background__shape2"></span>
+					<span className="screen__background__shape screen__background__shape1"></span>
 				</div>
 			</div>
 		</div></div>

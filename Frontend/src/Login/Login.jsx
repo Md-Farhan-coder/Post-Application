@@ -4,7 +4,9 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Cookies from 'js-cookie';
 
+
 const Login = () => {
+	const BASE_URL ="https://post-application-e27c.onrender.com"
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -37,7 +39,7 @@ const Login = () => {
 
 	const users = {
 		email: "",
-		password: "",
+		password: ""
 	};
 
 	const [user, setUser] = useState(users);
@@ -53,8 +55,10 @@ const Login = () => {
 		e.preventDefault();
 		 const{email,password} = user;
 		if(email!="" && password!=""){
-     	await axios.post("http://localhost:8000/login", user)
+     	await axios.post(`${BASE_URL}/login`, user)
 			.then((response) => {
+				console.log(response.data.message);
+				setMsg(response.data.message);
 				toast.success(response.data.message, { position: "top-right" });
 console.log(response);
             
@@ -62,47 +66,47 @@ console.log(response);
 			})
 			.catch((error) =>{
 				console.log(error);
-				if(error.response.data.status == 402)
+				
 					setMsg(error.response.data.message);
 				
 
-				console.log(error.response.status);
-			});
+				console.log(error.response.status);}
+			);
 	}
 else { setMsg("Fill Data Properly")}
 }
 	return (
 		<div className="gradient">
-		<div class="container gradient">
-	<div class="screen">
-		<div class="screen__content">
-			<form class="login" onSubmit={submitForm}>
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					{/* <input type="text" class="login__input" placeholder="User name / Email" /> */}
+		<div className="container gradient">
+	<div className="screen">
+		<div className="screen__content">
+			<form className="login" onSubmit={submitForm}>
+				<div className="login__field">
+					<i className="login__icon fas fa-user"></i>
+					{/* <input type="text" className="login__input" placeholder="User name / Email" /> */}
                     <input type="text" className="login__input" onChange={inputHandler} id="email" name="email" autoComplete='off' placeholder='Username' />
           
 				</div>
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					{/* <input type="password" class="login__input" placeholder="Password" /> */}
+				<div className="login__field">
+					<i className="login__icon fas fa-lock"></i>
+					{/* <input type="password" className="login__input" placeholder="Password" /> */}
                     <input type="password" className="login__input" onChange={inputHandler} id="password" name="password" autoComplete='off' placeholder='password' />
          
 				</div>
-				<button class="button login__submit">
-					<span class="button__text">Log In Now</span>
-					<i class="button__icon fas fa-chevron-right"></i>
+				<button className="button login__submit">
+					<span className="button__text">Log In Now</span>
+					<i className="button__icon fas fa-chevron-right"></i>
 				</button>		
 				<span className="new-msg" onClick={()=>	navigate("/register")}> Create new Account </span>
 				<span className="msg"> {msg}</span>			
 			</form>
 		
 		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
+		<div className="screen__background">
+			<span className="screen__background__shape screen__background__shape4"></span>
+			<span className="screen__background__shape screen__background__shape3"></span>		
+			<span className="screen__background__shape screen__background__shape2"></span>
+			<span className="screen__background__shape screen__background__shape1"></span>
 		</div>		
 	</div></div>
 </div>

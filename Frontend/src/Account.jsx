@@ -14,7 +14,7 @@ const Account = () => {
 	
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await axios.get("http://localhost:8000/getall");
+			const response = await axios.get("https://post-application-e27c.onrender.com/getall");
 			setUsers(response.data);
 		};
 
@@ -64,7 +64,7 @@ const CommentSec = (props) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post(`http://localhost:8000/comment/${props.id}`, {comment} );
+			await axios.post(`https://post-application-e27c.onrender.com/comment/${props.id}`, {comment} );
 			// Optionally, you can perform some action after successfully adding the comment
 			console.log('Comment added successfully');
 			setComment("");
@@ -161,7 +161,7 @@ const ModalComp = () => {
 		e.preventDefault();
 
 		await axios
-			.post("http://localhost:8000/posts", user)
+			.post("https://post-application-e27c.onrender.com/posts", user)
 			.then((response) => {
 				toast.success(response.data.msg, { position: "top-right" });
 				setUser({
