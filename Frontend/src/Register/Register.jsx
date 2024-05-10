@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from 'js-cookie';
 
+
 const Register = () => {
 	const history = useNavigate();
 	const [msg, setMsg] = useState("");
@@ -76,6 +77,7 @@ const Register = () => {
 	return (
 		<div className="container gradient">
 		<div className="container gradient">
+			
 			<div className="screen">
 				<div className="screen__content">
 					<form className="login" onSubmit={submitForm}>

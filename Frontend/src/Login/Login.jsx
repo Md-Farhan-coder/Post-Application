@@ -61,6 +61,7 @@ const Login = () => {
 				setMsg(response.data.message);
 				toast.success(response.data.message, { position: "top-right" });
 console.log(response);
+Cookies.set('isLoggedIn', JSON.stringify({bool:true,id:response.data.id}))
             
 				navigate("/account/"+response.data.id);
 			})

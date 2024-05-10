@@ -160,15 +160,23 @@ const ModalComp = () => {
 	const submitForm = async (e) => {
 		e.preventDefault();
 
+		var id;
+			
+		if (Cookies.get("isLoggedIn")!=undefined)				
+			{
+			
+			const loggedInCookie = Cookies.get("isLoggedIn");
+			
+		 id=	JSON.parse(loggedInCookie).id;
+			}
 		await axios
 			.post("https://post-application-e27c.onrender.com/posts", user)
 			.then((response) => {
 				toast.success(response.data.msg, { position: "top-right" });
-				setUser({
-					title: "",
-					description: "",
-				});
+				const newval= {title: "",description: ""};
+				setUser(newval);
 				console.log(" data send");
+				history("/account/"+id)
 				
 			})
 			.catch((error) => console.log("dfff"));
@@ -194,6 +202,7 @@ const ModalComp = () => {
 										id="title"
 										name="title"
 										autoComplete="off"
+										value={user.title}
 										placeholder="Enter title..."
 										required
 									/>
@@ -204,6 +213,7 @@ const ModalComp = () => {
 										onChange={inputHandler}
 										id="description"
 										name="description"
+										value={user.description}
 										placeholder="Enter description..."
 										rows="4"
 										required
