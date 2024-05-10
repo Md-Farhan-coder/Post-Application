@@ -97,3 +97,16 @@ export const comments =async (req, res) => {
 	  res.status(500).json({ message: 'Internal server error' });
 	}
 }
+
+export const delpost =async (req, res) => {
+const id= req.body.id;
+console.log(id);
+postModel.findByIdAndDelete(id,(err, docs)=> { 
+    if (err){ 
+        console.log(err) 
+    } 
+    else{ 
+       res.send({message:"Deleted Succesfully"}) 
+    } 
+})
+}

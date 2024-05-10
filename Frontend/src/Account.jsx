@@ -8,6 +8,8 @@ import Cookies from 'js-cookie';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillLike } from "react-icons/ai";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+
 
 const Account = () => {
 	const [users, setUsers] = useState([]);
@@ -21,7 +23,14 @@ const Account = () => {
 		fetchData();
 	}, []);
 
-	
+	const delPost = (id)=>{
+		const fetchData = async () => {
+			await axios.post(`https://post-application-e27c.onrender.com/delpost`, {id} );
+			setUsers(response.data);
+		};
+
+		fetchData();
+	}
 
 	return (
 		<>
@@ -38,8 +47,8 @@ const Account = () => {
 								<button className="action-button">
 									<AiFillLike /> <span>{user.like}</span>
 								</button>
-								<button className="action-button">
-									<FaRegCommentAlt />{" "}
+								<button className="action-button" onClick={()=>delPost(user._id)}>
+								<RiDeleteBin5Fill />
 								</button>
 								<CommentSec id={user._id} comment={user.comments}/>
 								
@@ -188,7 +197,7 @@ const ModalComp = () => {
 				<a href="#!" className="modal-overlay"></a>
 				<div className="modal-dialog modal-dialog-lg">
 					<a href="#!" className="modal-close">
-						&times;{" "}
+						&times;
 					</a>
 
 					<div className="modal-content newspaper model-my-css">
