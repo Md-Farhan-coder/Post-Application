@@ -13,6 +13,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 
 const Account = () => {
 	const [users, setUsers] = useState([]);
+	const [chg, setchg] = useState(true);
 	
 	useEffect(() => {
 		const fetchData = async () => {
@@ -21,12 +22,19 @@ const Account = () => {
 		};
 
 		fetchData();
-	}, []);
+	}, [chg]);
 
 	const delPost = (id)=>{
 		const fetchData = async () => {
-			await axios.post(`https://post-application-e27c.onrender.com/delpost`, {id} );
-			setUsers(response.data);
+			await axios.post(`https://post-application-e27c.onrender.com/delpost`, {id} ).
+			then((response)=>{
+					console.log("deleted post");
+			setchg(!chg);
+			})
+			.catch((error) =>{
+				console.log(error);
+		});
+		
 		};
 
 		fetchData();

@@ -104,9 +104,10 @@ console.log(id);
 postModel.findByIdAndDelete(id,(err, docs)=> { 
     if (err){ 
         console.log(err) 
+		res.json({error:"Error occured"})
     } 
     else{ 
-       res.send({message:"Deleted Succesfully"}) 
+       res.json({message:"Deleted Succesfully"}) 
     } 
 })
 }
