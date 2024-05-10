@@ -26,7 +26,7 @@ const Account = () => {
 
 	const delPost = (id)=>{
 		const fetchData = async () => {
-			await axios.post(`https://post-application-e27c.onrender.com/delpost`, {id} ).
+			await axios.post("https://post-application-e27c.onrender.com/delpost", {id} ).
 			then((response)=>{
 					console.log("deleted post");
 			setchg(!chg);
