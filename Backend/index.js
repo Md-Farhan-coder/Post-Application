@@ -11,7 +11,7 @@ app.use(cors());
 dotenv.config();
 
  
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8000;
 const URL = "mongodb+srv://childkazari:mdfarhan@cluster1.3rllqla.mongodb.net/NayaDB?retryWrites=true&w=majority&appName=Cluster1";
 
 mongoose.connect(URL).then(()=>{

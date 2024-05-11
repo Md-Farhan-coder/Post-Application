@@ -101,10 +101,10 @@ export const comments =async (req, res) => {
 export const delpost =async (req, res) => {
 const id= req.body.id;
 console.log(id);
-postModel.findByIdAndDelete(id,(err, docs)=> { 
+await postModel.findByIdAndDelete(id,(err, docs)=> { 
     if (err){ 
         console.log(err) 
-		res.json({error:"Error occured"})
+		res.status(300).json({error:"Error occured"})
     } 
     else{ 
        res.json({message:"Deleted Succesfully"}) 
